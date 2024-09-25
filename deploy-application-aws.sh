@@ -11,7 +11,7 @@ if [ -z ${ENVIRONMENT+x} ]; then
 fi
 
 if [ "${SLACK_NOTIFICATION_WEBHOOK}" != "" ]; then
-  curl -s -X POST -H 'Content-type: application/json' --data "{\"text\":\"*Deployment Starting*\n*Application*:\t\t $APPLICATION\n*Environment*:\t\t$ENVIRONMENT\n*Version*:\t\t\t\t $VERSION\n*Pipeline*:\t\t\t\t$CI_PIPELINE_URL\n*User*:  \t\t\t\t\t${{github.actor}}\"}" ${SLACK_NOTIFICATION_WEBHOOK} > /dev/null
+  curl -s -X POST -H 'Content-type: application/json' --data "{\"text\":\"*Deployment Starting*\n*Application*:\t\t $APPLICATION\n*Environment*:\t\t$ENVIRONMENT\n*Version*:\t\t\t\t $VERSION\n*Pipeline*:\t\t\t\t$CI_PIPELINE_URL\n*User*:  \t\t\t\t\t$GITHUB_USER\"}" ${SLACK_NOTIFICATION_WEBHOOK} > /dev/null
 fi
 
 echo "Application: $APPLICATION"
